@@ -11,7 +11,7 @@
 
     <name>kotlin-list-map-tree</name>
     <description>
-        Experiment with list and map over trees
+        Experiment with viewing a tree as a list and a map
     </description>
     <url>https://github.com/binkley/kotlin-list-map-tree</url>
     <licenses>

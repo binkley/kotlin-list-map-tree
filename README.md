@@ -10,7 +10,7 @@
 [![vulnerabilities](https://snyk.io/test/github/binkley/kotlin-list-map-tree/badge.svg)](https://snyk.io/test/github/binkley/kotlin-list-map-tree)
 [![license](https://img.shields.io/badge/license-Public%20Domain-blue.svg)](http://unlicense.org/)
 
-An experiment with list and map views of a tree that has values on nodes.
+Experiment with viewing a tree as a list and a map.
 
 ## Build and try
 
