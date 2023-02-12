@@ -1,4 +1,5 @@
+/*.iml
 /.batect/
 /.idea/
-/*.iml
+/.profiler/
 /target/
