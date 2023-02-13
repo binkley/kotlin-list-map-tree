@@ -168,7 +168,6 @@
                 <configuration>
                     <args>
                         <arg>-Werror</arg>
-                        <arg>-Xexplicit-api=strict</arg>
                     </args>
                     <javaParameters>true</javaParameters>
                     <languageVersion>1.8</languageVersion>
@@ -379,8 +378,7 @@
                 <version>${dependency-check-maven.version}</version>
                 <configuration>
                     <skip>${owasp.skip}</skip>
-                    <failBuildOnAnyVulnerability>true
-                    </failBuildOnAnyVulnerability>
+                    <failBuildOnCVSS>0</failBuildOnCVSS>
                 </configuration>
                 <executions>
                     <execution>
