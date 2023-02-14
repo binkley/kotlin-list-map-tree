@@ -20,6 +20,23 @@ internal class ListMapTreeTest {
     }
 
     @Test
+    fun `trees should display nicely for debugging`() {
+        val root = ListMapTree.newRoot("ROOT").apply {
+            newChild("CHILD")
+        }
+
+        root.toString() shouldBe "ListMapTree[name=ROOT, depth=0, children=[ListMapTree[name=CHILD, depth=1, children=[]]]]" // ktlint-disable max-line-length
+    }
+
+    @Test
+    fun `equality should cope with pathological cases`() {
+        val root = ListMapTree.newRoot("ROOT")
+
+        root.equals(null) shouldBe false
+        root.equals(this) shouldBe false
+    }
+
+    @Test
     fun `equality and hashing should consider name`() {
         val rootA = ListMapTree.newRoot("A-ROOT")
         val rootB = ListMapTree.newRoot("B-ROOT")

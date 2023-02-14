@@ -33,10 +33,10 @@
 
     <properties>
         <!-- @formatter:off -->
-        <coverage.branches>90</coverage.branches>
-        <coverage.lines>93</coverage.lines>
-        <coverage.instructions>84</coverage.instructions>
-        <coverage.mutation>90</coverage.mutation>
+        <coverage.branches>100</coverage.branches>
+        <coverage.lines>100</coverage.lines>
+        <coverage.instructions>100</coverage.instructions>
+        <coverage.mutation>100</coverage.mutation>
         <dependency-check-maven.version>8.1.0</dependency-check-maven.version>
         <detekt-maven-plugin.version>1.22.0</detekt-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
