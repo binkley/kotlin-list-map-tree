@@ -17,4 +17,13 @@ internal class PropertyValueTest {
 
         value.value shouldBe 64
     }
+
+    @Test
+    fun `binary data properties should have values`() {
+        val bytes = "\u17337".toByteArray()
+        System.err.println("FLOWER: $bytes")
+        val value = BinaryDataPropertyValue(bytes)
+
+        value.value shouldBe bytes
+    }
 }

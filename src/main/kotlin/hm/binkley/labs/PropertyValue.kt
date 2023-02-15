@@ -15,3 +15,8 @@ value class TextPropertyValue(override val value: String) :
 @JvmInline
 value class IntPropertyValue(override val value: Long) :
     PropertyValue<Long>
+
+@Generated // Lie to JaCoCo and PIT
+@JvmInline
+value class BinaryDataPropertyValue(override val value: ByteArray) :
+    PropertyValue<ByteArray>
