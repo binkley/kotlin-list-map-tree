@@ -105,4 +105,15 @@ internal class ListMapTreeTest {
 
         root.children shouldBe listOf(child)
     }
+
+    @Test
+    fun `should sort children by name`() {
+        val root = ListMapTree.newRoot("ROOT")
+        val childA = root.newChild("A-CHILD")
+        val childB = root.newChild("B-CHILD")
+        val childD = root.newChild("D-CHILD")
+        val childC = root.newChild("C-CHILD")
+
+        root.children shouldBe listOf(childA, childB, childC, childD)
+    }
 }
