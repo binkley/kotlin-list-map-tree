@@ -2,11 +2,13 @@ package hm.binkley.labs
 
 import java.util.Objects.hash
 import java.util.TreeSet
+import lombok.Generated
 
 sealed interface Value<T : Any> {
     val value: T
 }
 
+@Generated // Lie to JaCoCo and PIT
 @JvmInline
 value class TextValue(override val value: String) : Value<String>
 
