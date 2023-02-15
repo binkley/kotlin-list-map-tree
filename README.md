@@ -14,8 +14,32 @@ Experiment with viewing a tree as a list and a map.
 
 ## Build and try
 
-To build, use `./mvnw clean verify`.
-To build as CI would, use `./batect build`.
+To build, use `./batect build`.
+(This is as calling `./mvnw clean verify` with the same JDK.)
 
 This project assumes JDK 17.
 There are no run-time dependencies beyond the Kotlin standard library.
+
+## API
+
+(See [the tests](./src/test/kotlin/hm/binkley/labs) for examples.)
+
+### Start a new tree root
+
+Create a new tree root with `ListMapTree.newRoot("<root name>")`.
+This returns the node for the new root.
+
+### Add child nodes to the root or a child node
+
+Add child nodes with `node.newChild("<child name>")`.
+`<child name>` must be unique (else throw `IllegalArgumentException`).
+This returns the node for the new child.
+
+### Add propeties to a node
+
+Properties are typed: Text (string), Int (integer numbers up to 64 bits), or
+arrays of bytes.
+
+Add properties to a node with
+`node.setProperty("FOO", TextPropertyValue("BAR"))`.
+This returns the previous property value, or `null` if the property is new.

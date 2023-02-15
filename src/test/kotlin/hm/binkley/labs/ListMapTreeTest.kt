@@ -1,5 +1,6 @@
 package hm.binkley.labs
 
+import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import org.junit.jupiter.api.Test
@@ -88,6 +89,17 @@ internal class ListMapTreeTest {
         val child = root.newChild("CHILD")
 
         child.name shouldBe "CHILD"
+    }
+
+    @Test
+    fun `should complain about creating a duplicate child`() {
+        val root = ListMapTree.newRoot("ROOT")
+
+        root.newChild("CHILD")
+
+        shouldThrow<IllegalArgumentException> {
+            root.newChild("CHILD")
+        }
     }
 
     @Test

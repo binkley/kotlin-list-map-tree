@@ -9,6 +9,9 @@ class ListMapTree private constructor(val name: String, val depth: Int) :
     val children get() = _children.toList()
 
     fun newChild(name: String) = ListMapTree(name, depth + 1).also {
+        if (_children.map { it.name }.contains(name)) {
+            throw IllegalArgumentException("Duplicate name: $name")
+        }
         _children.add(it)
     }
 
