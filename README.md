@@ -15,9 +15,7 @@ Experiment with viewing a tree as a list and a map.
 ## Build and try
 
 To build, use `./mvnw clean verify`.
-
-There are no run-time dependencies beyond the Kotlin standard library.
-
 To build as CI would, use `./batect build`.
 
 This project assumes JDK 17.
+There are no run-time dependencies beyond the Kotlin standard library.
