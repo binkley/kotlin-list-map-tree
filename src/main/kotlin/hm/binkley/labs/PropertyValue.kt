@@ -10,3 +10,8 @@ sealed interface PropertyValue<T : Any> {
 @JvmInline
 value class TextPropertyValue(override val value: String) :
     PropertyValue<String>
+
+@Generated // Lie to JaCoCo and PIT
+@JvmInline
+value class IntPropertyValue(override val value: Long) :
+    PropertyValue<Long>

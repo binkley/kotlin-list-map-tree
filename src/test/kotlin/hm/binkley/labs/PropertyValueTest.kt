@@ -10,4 +10,11 @@ internal class PropertyValueTest {
 
         value.value shouldBe "FOO"
     }
+
+    @Test
+    fun `integer properties should have values`() {
+        val value = IntPropertyValue(64L)
+
+        value.value shouldBe 64
+    }
 }
