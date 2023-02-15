@@ -12,10 +12,10 @@ class ListMapTree private constructor(val name: String, val depth: Int) :
         _children.add(it)
     }
 
-    private val _properties = mutableMapOf<String, Value<*>>()
-    val properties: Map<String, Value<*>> = _properties
+    private val _properties = mutableMapOf<String, PropertyValue<*>>()
+    val properties: Map<String, PropertyValue<*>> = _properties
 
-    fun setProperty(name: String, value: Value<*>) =
+    fun setProperty(name: String, value: PropertyValue<*>) =
         _properties.put(name, value)
 
     override fun compareTo(other: ListMapTree) = name.compareTo(other.name)
