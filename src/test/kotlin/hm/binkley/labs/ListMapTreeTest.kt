@@ -125,17 +125,24 @@ internal class ListMapTreeTest {
     }
 
     @Test
+    fun `text properties should have values`() {
+        val value = TextValue("FOO")
+
+        value.value shouldBe "FOO"
+    }
+
+    @Test
     fun `should have properties`() {
         val root = ListMapTree.newRoot("ROOT")
 
-        val previous = root.setProperty("FOO", "BAR")
+        val previous = root.setProperty("FOO", TextValue("BAR"))
 
         previous shouldBe null
-        root.properties shouldBe mapOf("FOO" to "BAR")
+        root.properties shouldBe mapOf("FOO" to TextValue("BAR"))
 
-        val nextPrevious = root.setProperty("FOO", "BAZ")
+        val nextPrevious = root.setProperty("FOO", TextValue("BAZ"))
 
-        nextPrevious shouldBe "BAR"
-        root.properties shouldBe mapOf("FOO" to "BAZ")
+        nextPrevious shouldBe TextValue("BAR")
+        root.properties shouldBe mapOf("FOO" to TextValue("BAZ"))
     }
 }

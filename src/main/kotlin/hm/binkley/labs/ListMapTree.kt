@@ -3,6 +3,13 @@ package hm.binkley.labs
 import java.util.Objects.hash
 import java.util.TreeSet
 
+sealed interface Value<T : Any> {
+    val value: T
+}
+
+@JvmInline
+value class TextValue(override val value: String) : Value<String>
+
 class ListMapTree private constructor(val name: String, val depth: Int) :
     Comparable<ListMapTree> {
     private val _children = TreeSet<ListMapTree>()
@@ -12,10 +19,11 @@ class ListMapTree private constructor(val name: String, val depth: Int) :
         _children.add(it)
     }
 
-    private val _properties = mutableMapOf<String, Any>()
-    val properties: Map<String, Any> = _properties
+    private val _properties = mutableMapOf<String, Value<*>>()
+    val properties: Map<String, Value<*>> = _properties
 
-    fun setProperty(name: String, value: Any) = _properties.put(name, value)
+    fun setProperty(name: String, value: Value<*>) =
+        _properties.put(name, value)
 
     override fun compareTo(other: ListMapTree) = name.compareTo(other.name)
 
