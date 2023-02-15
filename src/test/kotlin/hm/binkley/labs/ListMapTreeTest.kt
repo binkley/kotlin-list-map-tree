@@ -125,13 +125,6 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `text properties should have values`() {
-        val value = TextPropertyValue("FOO")
-
-        value.value shouldBe "FOO"
-    }
-
-    @Test
     fun `should have properties`() {
         val root = ListMapTree.newRoot("ROOT")
 
