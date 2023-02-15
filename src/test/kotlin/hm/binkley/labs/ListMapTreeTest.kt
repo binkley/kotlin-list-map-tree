@@ -116,4 +116,26 @@ internal class ListMapTreeTest {
 
         root.children shouldBe listOf(childA, childB, childC, childD)
     }
+
+    @Test
+    fun `should start with no properties`() {
+        val root = ListMapTree.newRoot("ROOT")
+
+        root.properties shouldBe emptyMap()
+    }
+
+    @Test
+    fun `should have properties`() {
+        val root = ListMapTree.newRoot("ROOT")
+
+        val previous = root.setProperty("FOO", "BAR")
+
+        previous shouldBe null
+        root.properties shouldBe mapOf("FOO" to "BAR")
+
+        val nextPrevious = root.setProperty("FOO", "BAZ")
+
+        nextPrevious shouldBe "BAR"
+        root.properties shouldBe mapOf("FOO" to "BAZ")
+    }
 }
