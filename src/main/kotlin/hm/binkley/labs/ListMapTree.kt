@@ -1,6 +1,7 @@
 package hm.binkley.labs
 
 import java.util.Objects.hash
+import java.util.TreeMap
 import java.util.TreeSet
 
 class ListMapTree private constructor(val name: String, val depth: Int) :
@@ -15,7 +16,7 @@ class ListMapTree private constructor(val name: String, val depth: Int) :
         _children.add(it)
     }
 
-    private val _properties = mutableMapOf<String, PropertyValue<*>>()
+    private val _properties = TreeMap<String, PropertyValue<*>>()
     val properties: Map<String, PropertyValue<*>> = _properties
 
     fun setProperty(name: String, value: PropertyValue<*>) =

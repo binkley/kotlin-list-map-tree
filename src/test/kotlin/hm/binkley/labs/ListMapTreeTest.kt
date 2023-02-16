@@ -150,4 +150,18 @@ internal class ListMapTreeTest {
         nextPrevious shouldBe TextPropertyValue("BAR")
         root.properties shouldBe mapOf("FOO" to TextPropertyValue("BAZ"))
     }
+
+    @Test
+    fun `should sort properties by name`() {
+        val root = ListMapTree.newRoot("ROOT")
+
+        root.setProperty("A", TextPropertyValue("BAR"))
+        root.setProperty("B", TextPropertyValue("BAR"))
+        root.setProperty("D", TextPropertyValue("BAR"))
+        root.setProperty("C", TextPropertyValue("BAR"))
+
+        val keys = root.properties.keys.toList()
+
+        keys shouldBe listOf("A", "B", "C", "D")
+    }
 }
