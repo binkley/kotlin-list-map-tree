@@ -23,10 +23,10 @@ internal class ListMapTreeTest {
     @Test
     fun `trees should display nicely for debugging`() {
         val root = ListMapTree.newRoot("ROOT").apply {
-            newChild("CHILD")
+            newNode("NODE")
         }
 
-        root.toString() shouldBe "ListMapTree[name=ROOT, depth=0, children=[ListMapTree[name=CHILD, depth=1, children=[]]]]" // ktlint-disable max-line-length
+        root.toString() shouldBe "ListMapTree[name=ROOT, depth=0, nodes=[ListMapTree[name=NODE, depth=1, nodes=[]]]]" // ktlint-disable max-line-length
     }
 
     @Test
@@ -55,20 +55,20 @@ internal class ListMapTreeTest {
     @Test
     fun `equality and hashing should consider depth`() {
         val rootA = ListMapTree.newRoot("ROOT")
-        val child = rootA.newChild("ROOT")
+        val node = rootA.newNode("ROOT")
 
-        child.newChild("ROOT")
+        node.newNode("ROOT")
 
-        rootA.equals(child) shouldBe false
-        rootA.hashCode() shouldNotBe child.hashCode()
+        rootA.equals(node) shouldBe false
+        rootA.hashCode() shouldNotBe node.hashCode()
     }
 
     @Test
-    fun `equality and hashing should consider children`() {
+    fun `equality and hashing should consider nodes`() {
         val rootA = ListMapTree.newRoot("ROOT")
         val rootB = ListMapTree.newRoot("ROOT")
 
-        rootA.newChild("CHILD")
+        rootA.newNode("NODE")
 
         rootA.equals(rootB) shouldBe false
         rootA.hashCode() shouldNotBe rootB.hashCode()
@@ -76,57 +76,57 @@ internal class ListMapTreeTest {
         val rootC = ListMapTree.newRoot("ROOT")
         val rootD = ListMapTree.newRoot("ROOT")
 
-        rootC.newChild("CHILD")
-        rootD.newChild("CHILD")
+        rootC.newNode("NODE")
+        rootD.newNode("NODE")
 
         rootC.equals(rootD) shouldBe true
         rootC.hashCode() shouldBe rootD.hashCode()
     }
 
     @Test
-    fun `should create a child`() {
+    fun `should create a node`() {
         val root = ListMapTree.newRoot("ROOT")
-        val child = root.newChild("CHILD")
+        val node = root.newNode("NODE")
 
-        child.name shouldBe "CHILD"
+        node.name shouldBe "NODE"
     }
 
     @Test
-    fun `should complain about creating a duplicate child`() {
+    fun `should complain about creating a duplicate node`() {
         val root = ListMapTree.newRoot("ROOT")
 
-        root.newChild("CHILD")
+        root.newNode("NODE")
 
         shouldThrow<IllegalArgumentException> {
-            root.newChild("CHILD")
+            root.newNode("NODE")
         }
     }
 
     @Test
-    fun `first child depth should be 1`() {
+    fun `first node depth should be 1`() {
         val root = ListMapTree.newRoot("ROOT")
-        val child = root.newChild("CHILD")
+        val node = root.newNode("NODE")
 
-        child.depth shouldBe 1
+        node.depth shouldBe 1
     }
 
     @Test
-    fun `root should remember children`() {
+    fun `root should remember nodes`() {
         val root = ListMapTree.newRoot("ROOT")
-        val child = root.newChild("CHILD")
+        val node = root.newNode("NODE")
 
-        root.children shouldBe listOf(child)
+        root.nodes shouldBe listOf(node)
     }
 
     @Test
-    fun `should sort children by name`() {
+    fun `should sort nodes by name`() {
         val root = ListMapTree.newRoot("ROOT")
-        val childA = root.newChild("A-CHILD")
-        val childB = root.newChild("B-CHILD")
-        val childD = root.newChild("D-CHILD")
-        val childC = root.newChild("C-CHILD")
+        val nodeA = root.newNode("A-NODE")
+        val nodeB = root.newNode("B-NODE")
+        val nodeD = root.newNode("D-NODE")
+        val nodeC = root.newNode("C-NODE")
 
-        root.children shouldBe listOf(childA, childB, childC, childD)
+        root.nodes shouldBe listOf(nodeA, nodeB, nodeC, nodeD)
     }
 
     @Test
@@ -155,10 +155,10 @@ internal class ListMapTreeTest {
     fun `should sort properties by name`() {
         val root = ListMapTree.newRoot("ROOT")
 
-        root.setProperty("A", TextPropertyValue("BAR"))
-        root.setProperty("B", TextPropertyValue("BAR"))
-        root.setProperty("D", TextPropertyValue("BAR"))
-        root.setProperty("C", TextPropertyValue("BAR"))
+        root.setProperty("A", EmptyPropertyValue)
+        root.setProperty("B", EmptyPropertyValue)
+        root.setProperty("D", EmptyPropertyValue)
+        root.setProperty("C", EmptyPropertyValue)
 
         val keys = root.properties.keys.toList()
 

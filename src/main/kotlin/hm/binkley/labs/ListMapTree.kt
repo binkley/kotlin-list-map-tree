@@ -6,14 +6,14 @@ import java.util.TreeSet
 
 class ListMapTree private constructor(val name: String, val depth: Int) :
     Comparable<ListMapTree> {
-    private val _children = TreeSet<ListMapTree>()
-    val children get() = _children.toList()
+    private val _nodes = TreeSet<ListMapTree>()
+    val nodes get() = _nodes.toList()
 
-    fun newChild(name: String) = ListMapTree(name, depth + 1).also {
-        if (_children.map { it.name }.contains(name)) {
+    fun newNode(name: String) = ListMapTree(name, depth + 1).also {
+        if (_nodes.map { it.name }.contains(name)) {
             throw IllegalArgumentException("Duplicate name: $name")
         }
-        _children.add(it)
+        _nodes.add(it)
     }
 
     private val _properties = TreeMap<String, PropertyValue<*>>()
@@ -28,12 +28,12 @@ class ListMapTree private constructor(val name: String, val depth: Int) :
         other is ListMapTree &&
         name == other.name &&
         depth == other.depth &&
-        _children == other._children
+        _nodes == other._nodes
 
-    override fun hashCode() = hash(name, depth, _children)
+    override fun hashCode() = hash(name, depth, _nodes)
 
     override fun toString() =
-        "ListMapTree[name=$name, depth=$depth, children=$_children]"
+        "ListMapTree[name=$name, depth=$depth, nodes=$_nodes]"
 
     companion object {
         fun newRoot(name: String) = ListMapTree(name, 0)

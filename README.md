@@ -29,17 +29,30 @@ There are no run-time dependencies beyond the Kotlin standard library.
 Create a new tree root with `ListMapTree.newRoot("<root name>")`.
 This returns the node for the new root.
 
-### Add child nodes to the root or a child node
+### Add node nodes to the root or a node node
 
-Add child nodes with `node.newChild("<child name>")`.
-`<child name>` must be unique (else throw `IllegalArgumentException`).
-This returns the node for the new child.
+Add nodes with `node.newNode("<node name>")`.
+"<node name>" must be unique (else the call throws an
+`IllegalArgumentException`).
+This returns the new node.
 
 ### Add propeties to a node
 
 Properties are typed: Text (string), Int (integer numbers up to 64 bits), or
 arrays of bytes.
 
-Add properties to a node with
+Add or change properties of a node with
 `node.setProperty("FOO", TextPropertyValue("BAR"))`.
 This returns the previous property value, or `null` if the property is new.
+
+Values for properties may be of these types:
+
+- `EmptyPropertyValue` \[\*]
+- `IntPropertyValue`
+- `StringPropertyValue`
+- `TextPropertyValue`
+
+\[\*] `EmptyPropertyValue` is special: it has no true value, but holds a
+dummy `Empty` object. Use this when the presence of the property key is all
+that you need, and do not need an actual value.
+
