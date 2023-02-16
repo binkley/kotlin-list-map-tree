@@ -47,9 +47,9 @@ This returns the previous property value, or `null` if the property is new.
 
 Values for properties may be of these types:
 
+- `BinaryDataPropertyValue`
 - `EmptyPropertyValue` \[\*]
 - `IntPropertyValue`
-- `StringPropertyValue`
 - `TextPropertyValue`
 
 \[\*] `EmptyPropertyValue` is special: it has no true value, but holds a
