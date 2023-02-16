@@ -20,3 +20,11 @@ value class IntPropertyValue(override val value: Long) :
 @JvmInline
 value class BinaryDataPropertyValue(override val value: ByteArray) :
     PropertyValue<ByteArray>
+
+object Empty {
+    override fun toString() = "Empty"
+}
+
+object EmptyPropertyValue : PropertyValue<Empty> {
+    override val value = Empty
+}

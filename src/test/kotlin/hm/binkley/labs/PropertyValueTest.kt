@@ -21,9 +21,16 @@ internal class PropertyValueTest {
     @Test
     fun `binary data properties should have values`() {
         val bytes = "\u17337".toByteArray()
-        System.err.println("FLOWER: $bytes")
         val value = BinaryDataPropertyValue(bytes)
 
         value.value shouldBe bytes
+    }
+
+    @Test
+    fun `empty properties should exist`() {
+        val value = EmptyPropertyValue
+
+        value.value shouldBe Empty
+        Empty.toString() shouldBe "Empty"
     }
 }
