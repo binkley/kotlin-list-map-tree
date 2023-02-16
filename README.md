@@ -29,7 +29,7 @@ There are no run-time dependencies beyond the Kotlin standard library.
 Create a new tree root with `ListMapTree.newRoot("<root name>")`.
 This returns the node for the new root.
 
-### Add node nodes to the root or a node node
+### Add child nodes to the root or another node
 
 Add nodes with `node.newNode("<node name>")`.
 "<node name>" must be unique (else the call throws an
