@@ -47,12 +47,12 @@ This returns the previous property value, or `null` if the property is new.
 
 Values for properties may be of these types:
 
-- `EmptyPropertyValue` \[\*]
+- `EmptyPropertyValue`[^1]
 - `IntPropertyValue`
 - `StringPropertyValue`
 - `TextPropertyValue`
 
-\[\*] `EmptyPropertyValue` is special: it has no true value, but holds a
+[^1]: `EmptyPropertyValue` is special: it has no true value, but holds a
 dummy `Empty` object. Use this when the presence of the property key is all
 that you need, and do not need an actual value.
 
