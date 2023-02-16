@@ -1,11 +1,10 @@
 [**]
 end_of_line = lf
-# TODO: Impose max line length
-#max_line_length = 80
+max_line_length = 80
 
 [*.{kt,kts}]
+ktlint_code_style = official
 # Oh, the irony.  IntelliJ insists on sorting java* imports last
 ktlint_standard_import-ordering = disabled
 ktlint_standard_trailing-comma-on-call-site = disabled
 ktlint_standard_trailing-comma-on-declaration-site = disabled
-ktlint_code_style = official
