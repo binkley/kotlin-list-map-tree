@@ -24,6 +24,8 @@ value class BinaryDataPropertyValue(override val value: ByteArray) :
 /**
  * A nonce property value for a key where presence of the key is sufficient.
  * There is only one instance of `Empty`.
+ *
+ * @see EmptyPropertyValue
  */
 object Empty {
     override fun toString() = "Empty"
