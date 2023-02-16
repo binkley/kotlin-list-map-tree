@@ -32,7 +32,7 @@ This returns the node for the new root.
 ### Add child nodes to the root or another node
 
 Add nodes with `node.newNode("<node name>")`.
-"<node name>" must be unique (else the call throws an
+"\<node name>" must be unique (else the call throws an
 `IllegalArgumentException`).
 This returns the new node.
 
