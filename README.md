@@ -42,15 +42,15 @@ Properties are typed: Text (string), Int (integer numbers up to 64 bits), or
 arrays of bytes.
 
 Add or change properties of a node with
-`node.setProperty("FOO", TextPropertyValue("BAR"))`.
+`node.setProperty("FOO", <property value>)`.
 This returns the previous property value, or `null` if the property is new.
 
 Values for properties may be of these types:
 
-- `BinaryDataPropertyValue`
-- `EmptyPropertyValue` \[\*]
-- `IntPropertyValue`
-- `TextPropertyValue`
+- `BinaryDataPropertyValue` (constructed with a `ByteArray` parameter)
+- `EmptyPropertyValue` (no constructor \[\*])
+- `IntPropertyValue` (constructed with a `Long` parameter)
+- `TextPropertyValue` (constructed with a `String` parameter)
 
 \[\*] `EmptyPropertyValue` is special: it has no true value, but holds a
 dummy `Empty` object. Use this when the presence of the property key is all
