@@ -252,8 +252,8 @@ internal class ListMapTreeTest {
     @Test
     fun `should be convenient to set an integer property with a byte`() {
         val root = ListMapTree.newRoot("ROOT")
-        val previousNumber = 13.toByte()
-        val number = 21.toByte()
+        val previousNumber = 0b1101.toByte() // 13
+        val number = 0b10101.toByte() // 21
 
         root.setProperty("FOO", previousNumber)
         val previous = root.setProperty("FOO", number)
