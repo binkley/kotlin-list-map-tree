@@ -40,3 +40,15 @@ class ListMapTree private constructor(val name: String, val depth: Int) :
         fun newRoot(name: String) = ListMapTree(name, 0)
     }
 }
+
+fun ListMapTree.setProperty(name: String) =
+    setProperty(name, EmptyPropertyValue)
+
+fun ListMapTree.setProperty(name: String, data: ByteArray) =
+    setProperty(name, BinaryDataPropertyValue(data))
+
+fun ListMapTree.setProperty(name: String, number: Long) =
+    setProperty(name, IntPropertyValue(number))
+
+fun ListMapTree.setProperty(name: String, text: String) =
+    setProperty(name, TextPropertyValue(text))

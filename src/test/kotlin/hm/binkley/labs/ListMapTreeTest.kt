@@ -185,4 +185,54 @@ internal class ListMapTreeTest {
 
         keys shouldBe listOf("A", "B", "C", "D")
     }
+
+    @Test
+    fun `should be convenient to set an empty property`() {
+        val root = ListMapTree.newRoot("ROOT")
+
+        root.setProperty("FOO")
+        val previous = root.setProperty("FOO")
+
+        root.properties["FOO"] shouldBe EmptyPropertyValue
+        previous shouldBe EmptyPropertyValue
+    }
+
+    @Test
+    fun `should be convenient to set a binary data property`() {
+        val root = ListMapTree.newRoot("ROOT")
+        val previousData = "\u1F337".toByteArray() // 🌷
+        val data = "\u1F940".toByteArray() // 🥀
+
+        root.setProperty("FOO", previousData)
+        val previous = root.setProperty("FOO", data)
+
+        root.properties["FOO"] shouldBe BinaryDataPropertyValue(data)
+        previous shouldBe BinaryDataPropertyValue(previousData)
+    }
+
+    @Test
+    fun `should be convenient to set an integer property`() {
+        val root = ListMapTree.newRoot("ROOT")
+        val previousNumber = 13L
+        val number = 21L
+
+        root.setProperty("FOO", previousNumber)
+        val previous = root.setProperty("FOO", number)
+
+        root.properties["FOO"] shouldBe IntPropertyValue(number)
+        previous shouldBe IntPropertyValue(previousNumber)
+    }
+
+    @Test
+    fun `should be convenient to set a text property`() {
+        val root = ListMapTree.newRoot("ROOT")
+        val previousText = "BAR"
+        val text = "BAZ"
+
+        root.setProperty("FOO", previousText)
+        val previous = root.setProperty("FOO", text)
+
+        root.properties["FOO"] shouldBe TextPropertyValue(text)
+        previous shouldBe TextPropertyValue(previousText)
+    }
 }

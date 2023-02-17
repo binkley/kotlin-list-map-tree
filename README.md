@@ -38,8 +38,8 @@ This returns the new node.
 
 ### Add propeties to a node
 
-Properties are typed: Text (string), Int (integer numbers up to 64 bits), or
-arrays of bytes.
+Properties with values are typed: Binary Data (arrays of bytes), Integer
+(signed integer numbers up to 64 bits), Text (string).
 
 Add or change properties of a node with
 `node.setProperty("FOO", <property value>)`.
@@ -56,3 +56,9 @@ Values for properties may be of these types:
 dummy `Empty` object. Use this when the presence of the property key is all
 that you need, and do not need an actual value.
 
+For convience, you may also assign properties with direct values:
+
+- `node.setProperty("FOO")` sets an empty property
+- `node.setProperty("FOO", binaryData)`
+- `node.setProperty("FOO", number)`
+- `node.setProperty("FOO", text)`
