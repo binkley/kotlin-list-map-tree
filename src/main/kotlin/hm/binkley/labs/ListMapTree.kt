@@ -28,12 +28,13 @@ class ListMapTree private constructor(val name: String, val depth: Int) :
         other is ListMapTree &&
         name == other.name &&
         depth == other.depth &&
-        _nodes == other._nodes
+        _nodes == other._nodes &&
+        _properties == other._properties
 
-    override fun hashCode() = hash(name, depth, _nodes)
+    override fun hashCode() = hash(name, depth, _nodes, _properties)
 
     override fun toString() =
-        "ListMapTree[name=$name, depth=$depth, nodes=$_nodes]"
+        "ListMapTree[name=$name, depth=$depth, nodes=$_nodes, properties=$_properties]" // ktlint-disable max-line-length
 
     companion object {
         fun newRoot(name: String) = ListMapTree(name, 0)

@@ -24,9 +24,10 @@ internal class ListMapTreeTest {
     fun `trees should display nicely for debugging`() {
         val root = ListMapTree.newRoot("ROOT").apply {
             newNode("NODE")
+            setProperty("FOO", IntPropertyValue(7))
         }
 
-        root.toString() shouldBe "ListMapTree[name=ROOT, depth=0, nodes=[ListMapTree[name=NODE, depth=1, nodes=[]]]]" // ktlint-disable max-line-length
+        root.toString() shouldBe "ListMapTree[name=ROOT, depth=0, nodes=[ListMapTree[name=NODE, depth=1, nodes=[], properties={}]], properties={FOO=IntPropertyValue(value=7)}]" // ktlint-disable max-line-length
     }
 
     @Test
@@ -78,6 +79,26 @@ internal class ListMapTreeTest {
 
         rootC.newNode("NODE")
         rootD.newNode("NODE")
+
+        rootC.equals(rootD) shouldBe true
+        rootC.hashCode() shouldBe rootD.hashCode()
+    }
+
+    @Test
+    fun `equality and hashing should consider properties`() {
+        val rootA = ListMapTree.newRoot("ROOT")
+        val rootB = ListMapTree.newRoot("ROOT")
+
+        rootA.setProperty("FOO", EmptyPropertyValue)
+
+        rootA.equals(rootB) shouldBe false
+        rootA.hashCode() shouldNotBe rootB.hashCode()
+
+        val rootC = ListMapTree.newRoot("ROOT")
+        val rootD = ListMapTree.newRoot("ROOT")
+
+        rootC.setProperty("FOO", EmptyPropertyValue)
+        rootD.setProperty("FOO", EmptyPropertyValue)
 
         rootC.equals(rootD) shouldBe true
         rootC.hashCode() shouldBe rootD.hashCode()
