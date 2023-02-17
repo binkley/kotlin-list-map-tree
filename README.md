@@ -2,7 +2,7 @@
 <img src="https://unlicense.org/pd-icon.png" alt="Public Domain" align="right"/>
 </a>
 
-# Kotlin Rational
+# Kotlin List Map Tree
 
 [![build](https://github.com/binkley/kotlin-list-map-tree/workflows/build/badge.svg)](https://github.com/binkley/kotlin-list-map-tree/actions)
 [![issues](https://img.shields.io/github/issues/binkley/kotlin-list-map-tree.svg)](https://github.com/binkley/kotlin-list-map-tree/issues/)
