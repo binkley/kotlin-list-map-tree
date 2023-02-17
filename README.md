@@ -49,7 +49,7 @@ Values for properties may be of these types:
 
 - `BinaryDataPropertyValue` (constructed with a `ByteArray` parameter)
 - `EmptyPropertyValue` (no constructor \[\*])
-- `IntPropertyValue` (constructed with a `Long` parameter)
+- `IntegerPropertyValue` (constructed with a `Long` parameter)
 - `TextPropertyValue` (constructed with a `String` parameter)
 
 \[\*] `EmptyPropertyValue` is special: it has no true value, but holds a
