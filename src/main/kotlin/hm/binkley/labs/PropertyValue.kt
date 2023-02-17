@@ -45,7 +45,7 @@ object EmptyPropertyValue : PropertyValue<Empty> {
  */
 @Generated // Lie to JaCoCo and PIT
 @JvmInline
-value class IntPropertyValue(override val value: Long) :
+value class IntegerPropertyValue(override val value: Long) :
     PropertyValue<Long>
 
 /**

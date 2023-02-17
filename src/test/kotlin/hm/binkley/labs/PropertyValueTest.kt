@@ -22,7 +22,7 @@ internal class PropertyValueTest {
 
     @Test
     fun `integer properties should have values`() {
-        val value = IntPropertyValue(64L)
+        val value = IntegerPropertyValue(64L)
 
         value.value shouldBe 64
     }

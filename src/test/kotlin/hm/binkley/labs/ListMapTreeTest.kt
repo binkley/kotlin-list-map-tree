@@ -24,10 +24,10 @@ internal class ListMapTreeTest {
     fun `trees should display nicely for debugging`() {
         val root = ListMapTree.newRoot("ROOT").apply {
             newNode("NODE")
-            setProperty("FOO", IntPropertyValue(7))
+            setProperty("FOO", IntegerPropertyValue(7))
         }
 
-        root.toString() shouldBe "ListMapTree[name=ROOT, depth=0, nodes=[ListMapTree[name=NODE, depth=1, nodes=[], properties={}]], properties={FOO=IntPropertyValue(value=7)}]" // ktlint-disable max-line-length
+        root.toString() shouldBe "ListMapTree[name=ROOT, depth=0, nodes=[ListMapTree[name=NODE, depth=1, nodes=[], properties={}]], properties={FOO=IntegerPropertyValue(value=7)}]" // ktlint-disable max-line-length
     }
 
     @Test
@@ -219,8 +219,8 @@ internal class ListMapTreeTest {
         root.setProperty("FOO", previousNumber)
         val previous = root.setProperty("FOO", number)
 
-        root.properties["FOO"] shouldBe IntPropertyValue(number)
-        previous shouldBe IntPropertyValue(previousNumber)
+        root.properties["FOO"] shouldBe IntegerPropertyValue(number)
+        previous shouldBe IntegerPropertyValue(previousNumber)
     }
 
     @Test
