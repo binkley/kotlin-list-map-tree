@@ -50,5 +50,14 @@ fun ListMapTree.setProperty(name: String, data: ByteArray) =
 fun ListMapTree.setProperty(name: String, number: Long) =
     setProperty(name, IntegerPropertyValue(number))
 
+fun ListMapTree.setProperty(name: String, number: Int) =
+    setProperty(name, IntegerPropertyValue(number.toLong()))
+
+fun ListMapTree.setProperty(name: String, number: Short) =
+    setProperty(name, IntegerPropertyValue(number.toLong()))
+
+fun ListMapTree.setProperty(name: String, number: Byte) =
+    setProperty(name, IntegerPropertyValue(number.toLong()))
+
 fun ListMapTree.setProperty(name: String, text: String) =
     setProperty(name, TextPropertyValue(text))

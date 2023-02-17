@@ -211,7 +211,7 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `should be convenient to set an integer property`() {
+    fun `should be convenient to set an integer property with a long`() {
         val root = ListMapTree.newRoot("ROOT")
         val previousNumber = 13L
         val number = 21L
@@ -221,6 +221,45 @@ internal class ListMapTreeTest {
 
         root.properties["FOO"] shouldBe IntegerPropertyValue(number)
         previous shouldBe IntegerPropertyValue(previousNumber)
+    }
+
+    @Test
+    fun `should be convenient to set an integer property with an int`() {
+        val root = ListMapTree.newRoot("ROOT")
+        val previousNumber = 13
+        val number = 21
+
+        root.setProperty("FOO", previousNumber)
+        val previous = root.setProperty("FOO", number)
+
+        root.properties["FOO"] shouldBe IntegerPropertyValue(number.toLong())
+        previous shouldBe IntegerPropertyValue(previousNumber.toLong())
+    }
+
+    @Test
+    fun `should be convenient to set an integer property with a short`() {
+        val root = ListMapTree.newRoot("ROOT")
+        val previousNumber = 13.toShort()
+        val number = 21.toShort()
+
+        root.setProperty("FOO", previousNumber)
+        val previous = root.setProperty("FOO", number)
+
+        root.properties["FOO"] shouldBe IntegerPropertyValue(number.toLong())
+        previous shouldBe IntegerPropertyValue(previousNumber.toLong())
+    }
+
+    @Test
+    fun `should be convenient to set an integer property with a byte`() {
+        val root = ListMapTree.newRoot("ROOT")
+        val previousNumber = 13.toByte()
+        val number = 21.toByte()
+
+        root.setProperty("FOO", previousNumber)
+        val previous = root.setProperty("FOO", number)
+
+        root.properties["FOO"] shouldBe IntegerPropertyValue(number.toLong())
+        previous shouldBe IntegerPropertyValue(previousNumber.toLong())
     }
 
     @Test
