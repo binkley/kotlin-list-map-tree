@@ -56,6 +56,22 @@ internal class ChildrenTest {
     }
 
     @Test
+    fun `should remove a child node`() {
+        val root = ListMapTree.newRoot("ROOT")
+        root.addChild("A-CHILD")
+        val childB = root.addChild("B-CHILD")
+
+        val removed = root.removeChild("A-CHILD")
+
+        root.children shouldBe listOf(childB)
+        removed shouldBe true
+
+        val nextRemoved = root.removeChild("A-CHILD")
+
+        nextRemoved shouldBe false
+    }
+
+    @Test
     fun `should select a child node with an index`() {
         val root = ListMapTree.newRoot("ROOT")
         val child = root.addChild("CHILD")
