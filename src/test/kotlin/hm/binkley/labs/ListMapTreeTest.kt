@@ -201,7 +201,7 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `indexing by Int should select nodes`() {
+    fun `int indices should select nodes`() {
         val root = ListMapTree.newRoot("ROOT")
         val node = root.newNode("NODE")
 
@@ -212,12 +212,40 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `indexing by String should select properties`() {
+    fun `string indices should select properties`() {
         val root = ListMapTree.newRoot("ROOT")
 
         root.setProperty("FOO", "BAR")
 
         root["FOO"] shouldBe "BAR"
         root["BAZ"] shouldBe null
+    }
+
+    @Test
+    fun `string indices be assignable with binary data`() {
+        val root = ListMapTree.newRoot("ROOT")
+        val data = "\u1F337".toByteArray() // 🌷
+
+        root["FOO"] = data
+
+        root.properties["FOO"] shouldBe BinaryDataPropertyValue(data)
+    }
+
+    @Test
+    fun `string indices be assignable with an int`() {
+        val root = ListMapTree.newRoot("ROOT")
+
+        root["FOO"] = 13
+
+        root.properties["FOO"] shouldBe IntegerPropertyValue(13)
+    }
+
+    @Test
+    fun `string indices be assignable with text`() {
+        val root = ListMapTree.newRoot("ROOT")
+
+        root["FOO"] = "BAR"
+
+        root.properties["FOO"] shouldBe TextPropertyValue("BAR")
     }
 }

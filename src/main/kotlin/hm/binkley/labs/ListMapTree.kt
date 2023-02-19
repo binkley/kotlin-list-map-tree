@@ -53,4 +53,17 @@ fun ListMapTree.setProperty(name: String, text: String) =
     setProperty(name, TextPropertyValue(text))
 
 operator fun ListMapTree.get(index: Int) = nodes.get(index)
+
 operator fun ListMapTree.get(key: String) = properties.get(key)?.value
+
+operator fun ListMapTree.set(key: String, data: ByteArray) {
+    setProperty(key, data)
+}
+
+operator fun ListMapTree.set(key: String, number: Long) {
+    setProperty(key, number)
+}
+
+operator fun ListMapTree.set(key: String, text: String) {
+    setProperty(key, text)
+}
