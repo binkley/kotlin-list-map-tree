@@ -73,3 +73,6 @@ indices:
 Similarly for properties:
 
 - `node[key]` yields the value of the "key" property
+- `node[key] = data` sets the "key" property to a binary data value
+- `node[key] = number` sets the "key" property to an integer value
+- `node[key] = text` sets the "key" property to a text value
