@@ -148,7 +148,7 @@ internal class PropertiesTest {
     @Test
     fun `should select a child node with an index`() {
         val root = ListMapTree.newRoot("ROOT")
-        val child = root.newNode("CHILD")
+        val child = root.addChild("CHILD")
 
         root[0] shouldBe child
         shouldThrow<IndexOutOfBoundsException> {

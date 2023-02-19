@@ -25,7 +25,7 @@ internal class ListMapTreeTest {
     @Test
     fun `trees should display nicely for debugging`() {
         val root = ListMapTree.newRoot("ROOT").apply {
-            newNode("CHILD")
+            addChild("CHILD")
             setProperty("FOO", IntegerPropertyValue(7))
         }
 
