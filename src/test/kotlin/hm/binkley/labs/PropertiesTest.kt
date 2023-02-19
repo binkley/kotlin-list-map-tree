@@ -1,6 +1,5 @@
 package hm.binkley.labs
 
-import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
@@ -143,17 +142,6 @@ internal class PropertiesTest {
 
         root.properties.keys.contains("FOO") shouldBe false
         previous shouldBe TextPropertyValue("BAR")
-    }
-
-    @Test
-    fun `should select a child node with an index`() {
-        val root = ListMapTree.newRoot("ROOT")
-        val child = root.addChild("CHILD")
-
-        root[0] shouldBe child
-        shouldThrow<IndexOutOfBoundsException> {
-            root[1]
-        }
     }
 
     @Test

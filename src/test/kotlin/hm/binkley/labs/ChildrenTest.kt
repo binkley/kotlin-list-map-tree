@@ -54,4 +54,15 @@ internal class ChildrenTest {
 
         root.children shouldBe listOf(childA, childB, childC, childD)
     }
+
+    @Test
+    fun `should select a child node with an index`() {
+        val root = ListMapTree.newRoot("ROOT")
+        val child = root.addChild("CHILD")
+
+        root[0] shouldBe child
+        shouldThrow<IndexOutOfBoundsException> {
+            root[1]
+        }
+    }
 }
