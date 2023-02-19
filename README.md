@@ -43,7 +43,7 @@ This returns the node for the new root.
 
 ### Add child nodes to the root or another node
 
-Add nodes with `node.newNode("<node name>")`.
+Add a new child node with `node.newNode("<node name>")`.
 "\<node name>" must be unique (else the call throws an
 `IllegalArgumentException`).
 This returns the new node.
@@ -78,14 +78,16 @@ For convience, you may also assign properties with direct values:
 
 ### Work with trees
 
-As convenience, since nodes are sorted by name you may access them with
+As convenience, since child nodes are sorted by name you may access them with
 indices:
 
 - `node[index]` yields the n<sup>th</sup> child of "node"
 
 Similarly for properties:
 
-- `node[key]` yields the value of the "key" property
+- `node[key]` yields the value of the "key" property, or `null` for either a
+  missing key or an empty value
+
 - `node[key] = null` sets the "key" property to an empty value
 - `node[key] = data` sets the "key" property to a binary data value
 - `node[key] = number` sets the "key" property to an integer value

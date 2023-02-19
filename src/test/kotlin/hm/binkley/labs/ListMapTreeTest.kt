@@ -22,57 +22,57 @@ internal class ListMapTreeTest {
     @Test
     fun `trees should display nicely for debugging`() {
         val root = ListMapTree.newRoot("ROOT").apply {
-            newNode("NODE")
+            newNode("CHILD")
             setProperty("FOO", IntegerPropertyValue(7))
         }
 
-        root.toString() shouldBe "ListMapTree[name=ROOT, depth=0, nodes=[ListMapTree[name=NODE, depth=1, nodes=[], properties={}]], properties={FOO=IntegerPropertyValue(value=7)}]" // ktlint-disable max-line-length
+        root.toString() shouldBe "ListMapTree[name=ROOT, depth=0, children=[ListMapTree[name=CHILD, depth=1, children=[], properties={}]], properties={FOO=IntegerPropertyValue(value=7)}]" // ktlint-disable max-line-length
     }
 
     @Test
     fun `should create a node`() {
         val root = ListMapTree.newRoot("ROOT")
-        val node = root.newNode("NODE")
+        val node = root.newNode("CHILD")
 
-        node.name shouldBe "NODE"
+        node.name shouldBe "CHILD"
     }
 
     @Test
     fun `should complain about creating a duplicate node`() {
         val root = ListMapTree.newRoot("ROOT")
 
-        root.newNode("NODE")
+        root.newNode("CHILD")
 
         shouldThrow<IllegalArgumentException> {
-            root.newNode("NODE")
+            root.newNode("CHILD")
         }
     }
 
     @Test
     fun `first node depth should be 1`() {
         val root = ListMapTree.newRoot("ROOT")
-        val node = root.newNode("NODE")
+        val node = root.newNode("CHILD")
 
         node.depth shouldBe 1
     }
 
     @Test
-    fun `root should remember nodes`() {
+    fun `root should remember child nodes`() {
         val root = ListMapTree.newRoot("ROOT")
-        val node = root.newNode("NODE")
+        val node = root.newNode("CHILD")
 
-        root.nodes shouldBe listOf(node)
+        root.children shouldBe listOf(node)
     }
 
     @Test
-    fun `should sort nodes by name`() {
+    fun `should sort child nodes by name`() {
         val root = ListMapTree.newRoot("ROOT")
-        val nodeA = root.newNode("A-NODE")
-        val nodeB = root.newNode("B-NODE")
-        val nodeD = root.newNode("D-NODE")
-        val nodeC = root.newNode("C-NODE")
+        val nodeA = root.newNode("A-CHILD")
+        val nodeB = root.newNode("B-CHILD")
+        val nodeD = root.newNode("D-CHILD")
+        val nodeC = root.newNode("C-CHILD")
 
-        root.nodes shouldBe listOf(nodeA, nodeB, nodeC, nodeD)
+        root.children shouldBe listOf(nodeA, nodeB, nodeC, nodeD)
     }
 
     @Test
@@ -201,9 +201,9 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `int indices should select nodes`() {
+    fun `int indices should select child nodes`() {
         val root = ListMapTree.newRoot("ROOT")
-        val node = root.newNode("NODE")
+        val node = root.newNode("CHILD")
 
         root[0] shouldBe node
         shouldThrow<IndexOutOfBoundsException> {

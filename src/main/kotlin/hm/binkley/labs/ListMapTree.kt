@@ -5,14 +5,14 @@ import java.util.TreeSet
 
 class ListMapTree private constructor(val name: String, val depth: Int) :
     Comparable<ListMapTree> {
-    private val _nodes = TreeSet<ListMapTree>()
-    val nodes get() = _nodes.toList()
+    private val _children = TreeSet<ListMapTree>()
+    val children get() = _children.toList()
 
     fun newNode(name: String) = ListMapTree(name, depth + 1).also {
-        if (_nodes.map { it.name }.contains(name)) {
+        if (_children.map { it.name }.contains(name)) {
             throw IllegalArgumentException("Duplicate name: $name")
         }
-        _nodes.add(it)
+        _children.add(it)
     }
 
     private val _properties = TreeMap<String, PropertyValue<*>>()
@@ -24,7 +24,7 @@ class ListMapTree private constructor(val name: String, val depth: Int) :
     override fun compareTo(other: ListMapTree) = name.compareTo(other.name)
 
     override fun toString() =
-        "ListMapTree[name=$name, depth=$depth, nodes=$_nodes, properties=$_properties]" // ktlint-disable max-line-length
+        "ListMapTree[name=$name, depth=$depth, children=$_children, properties=$_properties]" // ktlint-disable max-line-length
 
     companion object {
         fun newRoot(name: String) = ListMapTree(name, 0)
@@ -54,7 +54,7 @@ fun ListMapTree.setProperty(name: String, number: Byte) =
 fun ListMapTree.setProperty(name: String, text: String) =
     setProperty(name, TextPropertyValue(text))
 
-operator fun ListMapTree.get(index: Int) = nodes.get(index)
+operator fun ListMapTree.get(index: Int) = children.get(index)
 
 operator fun ListMapTree.get(key: String) = properties.get(key)?.value
 
