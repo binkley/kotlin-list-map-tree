@@ -54,7 +54,10 @@ Registry](https://en.wikipedia.org/wiki/Windows_Registry).
 
 ### Start a new tree root node
 
-Create a new tree root with `ListMapTree.newRoot(name)`.
+Create a new tree root with:
+
+- `ListMapTree.newRoot(name)`
+
 This returns the new root node.
 
 ### Add child nodes to any node
