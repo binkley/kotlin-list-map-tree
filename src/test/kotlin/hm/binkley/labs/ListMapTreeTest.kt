@@ -2,7 +2,6 @@ package hm.binkley.labs
 
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
-import io.kotest.matchers.shouldNotBe
 import org.junit.jupiter.api.Test
 
 internal class ListMapTreeTest {
@@ -28,80 +27,6 @@ internal class ListMapTreeTest {
         }
 
         root.toString() shouldBe "ListMapTree[name=ROOT, depth=0, nodes=[ListMapTree[name=NODE, depth=1, nodes=[], properties={}]], properties={FOO=IntegerPropertyValue(value=7)}]" // ktlint-disable max-line-length
-    }
-
-    @Test
-    fun `equality should cope with pathological cases`() {
-        val root = ListMapTree.newRoot("ROOT")
-
-        root.equals(null) shouldBe false
-        root.equals(this) shouldBe false
-    }
-
-    @Test
-    fun `equality and hashing should consider name`() {
-        val rootA = ListMapTree.newRoot("A-ROOT")
-        val rootB = ListMapTree.newRoot("B-ROOT")
-
-        rootA.equals(rootB) shouldBe false
-        rootA.hashCode() shouldNotBe rootB.hashCode()
-
-        val rootC = ListMapTree.newRoot("ROOT")
-        val rootD = ListMapTree.newRoot("ROOT")
-
-        rootC.equals(rootD) shouldBe true
-        rootC.hashCode() shouldBe rootD.hashCode()
-    }
-
-    @Test
-    fun `equality and hashing should consider depth`() {
-        val rootA = ListMapTree.newRoot("ROOT")
-        val node = rootA.newNode("ROOT")
-
-        node.newNode("ROOT")
-
-        rootA.equals(node) shouldBe false
-        rootA.hashCode() shouldNotBe node.hashCode()
-    }
-
-    @Test
-    fun `equality and hashing should consider nodes`() {
-        val rootA = ListMapTree.newRoot("ROOT")
-        val rootB = ListMapTree.newRoot("ROOT")
-
-        rootA.newNode("NODE")
-
-        rootA.equals(rootB) shouldBe false
-        rootA.hashCode() shouldNotBe rootB.hashCode()
-
-        val rootC = ListMapTree.newRoot("ROOT")
-        val rootD = ListMapTree.newRoot("ROOT")
-
-        rootC.newNode("NODE")
-        rootD.newNode("NODE")
-
-        rootC.equals(rootD) shouldBe true
-        rootC.hashCode() shouldBe rootD.hashCode()
-    }
-
-    @Test
-    fun `equality and hashing should consider properties`() {
-        val rootA = ListMapTree.newRoot("ROOT")
-        val rootB = ListMapTree.newRoot("ROOT")
-
-        rootA.setProperty("FOO", EmptyPropertyValue)
-
-        rootA.equals(rootB) shouldBe false
-        rootA.hashCode() shouldNotBe rootB.hashCode()
-
-        val rootC = ListMapTree.newRoot("ROOT")
-        val rootD = ListMapTree.newRoot("ROOT")
-
-        rootC.setProperty("FOO", EmptyPropertyValue)
-        rootD.setProperty("FOO", EmptyPropertyValue)
-
-        rootC.equals(rootD) shouldBe true
-        rootC.hashCode() shouldBe rootD.hashCode()
     }
 
     @Test

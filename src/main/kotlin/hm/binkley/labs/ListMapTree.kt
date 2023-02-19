@@ -1,6 +1,5 @@
 package hm.binkley.labs
 
-import java.util.Objects.hash
 import java.util.TreeMap
 import java.util.TreeSet
 
@@ -23,15 +22,6 @@ class ListMapTree private constructor(val name: String, val depth: Int) :
         _properties.put(name, value)
 
     override fun compareTo(other: ListMapTree) = name.compareTo(other.name)
-
-    override fun equals(other: Any?): Boolean = this === other ||
-        other is ListMapTree &&
-        name == other.name &&
-        depth == other.depth &&
-        _nodes == other._nodes &&
-        _properties == other._properties
-
-    override fun hashCode() = hash(name, depth, _nodes, _properties)
 
     override fun toString() =
         "ListMapTree[name=$name, depth=$depth, nodes=$_nodes, properties=$_properties]" // ktlint-disable max-line-length
