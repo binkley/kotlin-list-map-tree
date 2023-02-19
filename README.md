@@ -24,10 +24,20 @@ There are no run-time dependencies beyond the Kotlin standard library.
 
 A `ListMapTree` is [a tree data
 structure](https://en.wikipedia.org/wiki/Tree_(data_structure)) where:
-- Each node may have multiple child nodes
-- Each node may have [an associative
-  array](https://en.wikipedia.org/wiki/Associative_array) of key-value pairs
-  where keys are strings
+
+- Each node may have multiple child nodes where nodes are [sorted by
+  name](https://en.wikipedia.org/wiki/Tree_(graph_theory)#Ordered_tree)
+- Each node has properties ([an associative
+  array](https://en.wikipedia.org/wiki/Associative_array) of key-value pairs)
+  where names (keys) are [sorted
+  strings](https://en.wikipedia.org/wiki/Associative_array#Ordered_dictionary)
+
+Properties are typed:
+
+- Empty signifying presence but without a value
+- Binary data
+- Integer data
+- Text data
 
 A similar model is [the Windows
 Registry](https://en.wikipedia.org/wiki/Windows_Registry).
