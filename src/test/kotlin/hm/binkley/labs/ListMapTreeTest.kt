@@ -222,7 +222,7 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `string indices be assignable with binary data`() {
+    fun `string indices should be assignable with binary data`() {
         val root = ListMapTree.newRoot("ROOT")
         val data = "\u1F337".toByteArray() // 🌷
 
@@ -232,7 +232,7 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `string indices be assignable with an int`() {
+    fun `string indices should be assignable with an int`() {
         val root = ListMapTree.newRoot("ROOT")
 
         root["FOO"] = 13
@@ -241,7 +241,7 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `string indices be assignable with text`() {
+    fun `string indices should be assignable with text`() {
         val root = ListMapTree.newRoot("ROOT")
 
         root["FOO"] = "BAR"
