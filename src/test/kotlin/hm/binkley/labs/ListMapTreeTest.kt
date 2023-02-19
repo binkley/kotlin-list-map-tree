@@ -199,4 +199,25 @@ internal class ListMapTreeTest {
         root.properties["FOO"] shouldBe TextPropertyValue(text)
         previous shouldBe TextPropertyValue(previousText)
     }
+
+    @Test
+    fun `indexing by Int should select nodes`() {
+        val root = ListMapTree.newRoot("ROOT")
+        val node = root.newNode("NODE")
+
+        root[0] shouldBe node
+        shouldThrow<IndexOutOfBoundsException> {
+            root[1]
+        }
+    }
+
+    @Test
+    fun `indexing by String should select properties`() {
+        val root = ListMapTree.newRoot("ROOT")
+
+        root.setProperty("FOO", "BAR")
+
+        root["FOO"] shouldBe "BAR"
+        root["BAZ"] shouldBe null
+    }
 }

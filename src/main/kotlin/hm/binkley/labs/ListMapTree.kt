@@ -51,3 +51,6 @@ fun ListMapTree.setProperty(name: String, number: Byte) =
 
 fun ListMapTree.setProperty(name: String, text: String) =
     setProperty(name, TextPropertyValue(text))
+
+operator fun ListMapTree.get(index: Int) = nodes.get(index)
+operator fun ListMapTree.get(key: String) = properties.get(key)?.value

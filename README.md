@@ -62,3 +62,14 @@ For convience, you may also assign properties with direct values:
 - `node.setProperty("FOO", binaryData)`
 - `node.setProperty("FOO", number)`
 - `node.setProperty("FOO", text)`
+
+### Work with trees
+
+As convenience, since nodes are sorted by name you may access them with
+indices:
+
+- `node[index]` yields the n<sup>th</sup> child of "node"
+
+Similarly for properties:
+
+- `node[key]` yields the value of the "key" property
