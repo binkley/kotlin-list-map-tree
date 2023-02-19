@@ -97,7 +97,6 @@ Similarly for properties:
 
 - `node[key]` yields the value of the "key" property, or `null` for either a
   missing key or an empty value
-
 - `node[key] = null` sets the "key" property to an empty value
 - `node[key] = data` sets the "key" property to a binary data value
 - `node[key] = number` sets the "key" property to an integer value
