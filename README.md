@@ -116,10 +116,10 @@ Remove a property from a node with:
 
 ### Work with trees
 
-As convenience, since child nodes are sorted by name you may access them with
+As convenience, since child nodes are sorted by name, you may access them with
 indices:
 
-- `node[index]` yields the n<sup>th</sup> child of "node"
+- `node[index]` yields the n<sup>th</sup> child node
 
 Similarly for properties:
 
