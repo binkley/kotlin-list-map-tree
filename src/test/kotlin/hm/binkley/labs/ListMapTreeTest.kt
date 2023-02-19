@@ -235,8 +235,8 @@ internal class ListMapTreeTest {
     @Test
     fun `should remove a property with an index`() {
         val root = ListMapTree.newRoot("ROOT")
-        root["FOO"] = Empty
 
+        root.setProperty("FOO", "BAR")
         root["FOO"] = null
 
         root.properties.keys.contains("FOO") shouldBe false

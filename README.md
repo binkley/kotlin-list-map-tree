@@ -63,7 +63,7 @@ This returns the new node.
 Properties with values are typed: Binary Data (arrays of bytes), Integer
 (signed integer numbers up to 64 bits), Text (string).
 
-Add or change properties of a node with
+Add or change a property of a node with
 `node.setProperty("FOO", <property value>)`.
 This returns the previous property value, or `null` if the property is new.
 
@@ -80,11 +80,14 @@ that you need, and do not need an actual value.
 
 For convience, you may also assign properties with direct values:
 
-- `node.setProperty("FOO", null)`) removes the property
 - `node.setProperty("FOO", Empty)`)
 - `node.setProperty("FOO", binaryData)`
 - `node.setProperty("FOO", number)`
 - `node.setProperty("FOO", text)`
+
+### Remove properties from a node
+
+Remove a property from a node with `node.removeProperty("FOO")`.
 
 ### Work with trees
 
@@ -95,9 +98,10 @@ indices:
 
 Similarly for properties:
 
-- `node[key]` yields the value of the "key" property, or `null` when missing
-- `node[key] = Empty` sets the "key" property to an empty value
-- `node[key] = null` sets the "key" property to an empty value
-- `node[key] = data` sets the "key" property to a binary data value
-- `node[key] = number` sets the "key" property to an integer value
-- `node[key] = text` sets the "key" property to a text value
+- `node["FOO"]` yields the value of the property, or `null` if missing or
+  empty
+- `node["FOO"] = null` removes the property
+- `node["FOO"] = Empty` sets the property to the empty value
+- `node["FOO"] = data` sets the property to a binary data value
+- `node["FOO"] = number` sets the property to an integer value
+- `node["FOO"] = text` sets the property to a text value
