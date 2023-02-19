@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Test
 
 internal class ListMapTreeTest {
     @Test
-    fun `should make a root`() {
+    fun `should make a root node`() {
         val root = ListMapTree.newRoot("ROOT")
 
         root.name shouldBe "ROOT"
     }
 
     @Test
-    fun `root depth should be 0`() {
+    fun `root node depth should be 0`() {
         val root = ListMapTree.newRoot("ROOT")
 
         root.depth shouldBe 0
@@ -30,15 +30,15 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `should create a node`() {
+    fun `should create a child node`() {
         val root = ListMapTree.newRoot("ROOT")
-        val node = root.newNode("CHILD")
+        val child = root.newNode("CHILD")
 
-        node.name shouldBe "CHILD"
+        child.name shouldBe "CHILD"
     }
 
     @Test
-    fun `should complain about creating a duplicate node`() {
+    fun `should complain when creating a duplicate child node`() {
         val root = ListMapTree.newRoot("ROOT")
 
         root.newNode("CHILD")
@@ -49,30 +49,30 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `first node depth should be 1`() {
+    fun `first child node depth should be 1`() {
         val root = ListMapTree.newRoot("ROOT")
-        val node = root.newNode("CHILD")
+        val child = root.newNode("CHILD")
 
-        node.depth shouldBe 1
+        child.depth shouldBe 1
     }
 
     @Test
     fun `root should remember child nodes`() {
         val root = ListMapTree.newRoot("ROOT")
-        val node = root.newNode("CHILD")
+        val child = root.newNode("CHILD")
 
-        root.children shouldBe listOf(node)
+        root.children shouldBe listOf(child)
     }
 
     @Test
     fun `should sort child nodes by name`() {
         val root = ListMapTree.newRoot("ROOT")
-        val nodeA = root.newNode("A-CHILD")
-        val nodeB = root.newNode("B-CHILD")
-        val nodeD = root.newNode("D-CHILD")
-        val nodeC = root.newNode("C-CHILD")
+        val childA = root.newNode("A-CHILD")
+        val childB = root.newNode("B-CHILD")
+        val childD = root.newNode("D-CHILD")
+        val childC = root.newNode("C-CHILD")
 
-        root.children shouldBe listOf(nodeA, nodeB, nodeC, nodeD)
+        root.children shouldBe listOf(childA, childB, childC, childD)
     }
 
     @Test
@@ -214,9 +214,9 @@ internal class ListMapTreeTest {
     @Test
     fun `should select a child node with an index`() {
         val root = ListMapTree.newRoot("ROOT")
-        val node = root.newNode("CHILD")
+        val child = root.newNode("CHILD")
 
-        root[0] shouldBe node
+        root[0] shouldBe child
         shouldThrow<IndexOutOfBoundsException> {
             root[1]
         }
