@@ -116,7 +116,7 @@ internal class ListMapTreeTest {
         val root = ListMapTree.newRoot("ROOT")
 
         root.setProperty("FOO")
-        val previous = root.setProperty("FOO")
+        val previous = root.setProperty("FOO", null)
 
         root.properties["FOO"] shouldBe EmptyPropertyValue
         previous shouldBe EmptyPropertyValue
@@ -222,7 +222,16 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `string indices should be assignable with binary data`() {
+    fun `string (property) indices should be assignable as empty`() {
+        val root = ListMapTree.newRoot("ROOT")
+
+        root["FOO"] = null
+
+        root.properties["FOO"] shouldBe EmptyPropertyValue
+    }
+
+    @Test
+    fun `string (property) indices should be assignable with binary data`() {
         val root = ListMapTree.newRoot("ROOT")
         val data = "\u1F337".toByteArray() // 🌷
 
@@ -232,7 +241,7 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `string indices should be assignable with an int`() {
+    fun `string (property) indices should be assignable with numbers`() {
         val root = ListMapTree.newRoot("ROOT")
 
         root["FOO"] = 13
@@ -241,7 +250,7 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `string indices should be assignable with text`() {
+    fun `string (property) indices should be assignable with text`() {
         val root = ListMapTree.newRoot("ROOT")
 
         root["FOO"] = "BAR"

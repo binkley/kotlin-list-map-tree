@@ -31,8 +31,10 @@ class ListMapTree private constructor(val name: String, val depth: Int) :
     }
 }
 
-fun ListMapTree.setProperty(name: String) =
-    setProperty(name, EmptyPropertyValue)
+fun ListMapTree.setProperty(
+    name: String,
+    @Suppress("UNUSED_PARAMETER") empty: Unit? = null
+) = setProperty(name, EmptyPropertyValue)
 
 fun ListMapTree.setProperty(name: String, data: ByteArray) =
     setProperty(name, BinaryDataPropertyValue(data))
@@ -55,6 +57,10 @@ fun ListMapTree.setProperty(name: String, text: String) =
 operator fun ListMapTree.get(index: Int) = nodes.get(index)
 
 operator fun ListMapTree.get(key: String) = properties.get(key)?.value
+
+operator fun ListMapTree.set(key: String, empty: Unit?) {
+    setProperty(key, empty)
+}
 
 operator fun ListMapTree.set(key: String, data: ByteArray) {
     setProperty(key, data)
