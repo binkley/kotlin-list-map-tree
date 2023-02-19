@@ -20,6 +20,18 @@ To build, use `./batect build`.
 This project assumes JDK 17.
 There are no run-time dependencies beyond the Kotlin standard library.
 
+## Concepts
+
+A `ListMapTree` is [a tree data
+structure](https://en.wikipedia.org/wiki/Tree_(data_structure)) where:
+- Each node may have multiple child nodes
+- Each node may have [an associative
+  array](https://en.wikipedia.org/wiki/Associative_array) of key-value pairs
+  where keys are strings
+
+A similar model is [the Windows
+Registry](https://en.wikipedia.org/wiki/Windows_Registry).
+
 ## API
 
 (See [the tests](./src/test/kotlin/hm/binkley/labs) for examples.)
@@ -58,7 +70,8 @@ that you need, and do not need an actual value.
 
 For convience, you may also assign properties with direct values:
 
-- `node.setProperty("FOO")` sets an empty property
+- `node.setProperty("FOO")` sets an empty property (as does
+  `node.setProperty("FOO", null)`)
 - `node.setProperty("FOO", binaryData)`
 - `node.setProperty("FOO", number)`
 - `node.setProperty("FOO", text)`
@@ -73,6 +86,7 @@ indices:
 Similarly for properties:
 
 - `node[key]` yields the value of the "key" property
+- `node[key] = null` sets the "key" property to an empty value
 - `node[key] = data` sets the "key" property to a binary data value
 - `node[key] = number` sets the "key" property to an integer value
 - `node[key] = text` sets the "key" property to a text value
