@@ -4,6 +4,10 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
+/**
+ * @see ChildrenTest
+ * @see ListMapTreeTest
+ */
 internal class PropertiesTest {
     @Test
     fun `should start with no properties`() {

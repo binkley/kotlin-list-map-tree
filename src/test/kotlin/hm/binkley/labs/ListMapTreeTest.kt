@@ -3,6 +3,10 @@ package hm.binkley.labs
 import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
+/**
+ * @see ChildrenTest
+ * @see PropertiesTest
+ */
 internal class ListMapTreeTest {
     @Test
     fun `should make a root node`() {
