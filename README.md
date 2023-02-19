@@ -46,25 +46,45 @@ Registry](https://en.wikipedia.org/wiki/Windows_Registry).
 
 (See [the tests](./src/test/kotlin/hm/binkley/labs) for examples.)
 
-### Start a new tree root
+### Properties on a node:
 
-Create a new tree root with `ListMapTree.newRoot("<root name>")`.
-This returns the node for the new root.
+- `depth` is how far from the root node this node lies
+- `name` is the node name: all nodes are named and must be unique among
+  children
 
-### Add child nodes to the root or another node
+### Start a new tree root node
 
-Add a new child node with `node.newNode("<node name>")`.
-"\<node name>" must be unique (else the call throws an
-`IllegalArgumentException`).
-This returns the new node.
+Create a new tree root with `ListMapTree.newRoot(name)`.
+This returns the new root node.
+
+### Add child nodes to any node
+
+Create a new child node and add it:
+
+- `node.newChild(name)`
+
+If a sibling node is already named `name`, throw an
+`IllegalArgumentException`.
+This returns the new child node (if not throwing).
+
+### Remove child nodes from any node
+
+Remove a child node directly or by name:
+
+- `node.removeChild(child)`
+- `node.removeChild(name)`
+
+This returns `true` or `false` if there were a child node with `name`.
 
 ### Add propeties to a node
 
 Properties with values are typed: Binary Data (arrays of bytes), Integer
 (signed integer numbers up to 64 bits), Text (string).
 
-Add or change a property of a node with
-`node.setProperty("FOO", <property value>)`.
+Add or change a property of any node with:
+
+- `node.setProperty(name, value)`
+
 This returns the previous property value, or `null` if the property is new.
 
 Values for properties may be of these types:
@@ -80,14 +100,16 @@ that you need, and do not need an actual value.
 
 For convience, you may also assign properties with direct values:
 
-- `node.setProperty("FOO", Empty)`)
-- `node.setProperty("FOO", binaryData)`
-- `node.setProperty("FOO", number)`
-- `node.setProperty("FOO", text)`
+- `node.setProperty(name, Empty)`)
+- `node.setProperty(name, binaryData)`
+- `node.setProperty(name, number)`
+- `node.setProperty(name, text)`
 
 ### Remove properties from a node
 
-Remove a property from a node with `node.removeProperty("FOO")`.
+Remove a property from a node with:
+
+- `node.removeProperty(name)`
 
 ### Work with trees
 
@@ -98,10 +120,10 @@ indices:
 
 Similarly for properties:
 
-- `node["FOO"]` yields the value of the property, or `null` if missing or
+- `node[name]` yields the value of the property, or `null` if missing or
   empty
-- `node["FOO"] = null` removes the property
-- `node["FOO"] = Empty` sets the property to the empty value
-- `node["FOO"] = data` sets the property to a binary data value
-- `node["FOO"] = number` sets the property to an integer value
-- `node["FOO"] = text` sets the property to a text value
+- `node[name] = null` removes the property
+- `node[name] = Empty` sets the property to the empty value
+- `node[name] = data` sets the property to a binary data value
+- `node[name] = number` sets the property to an integer value
+- `node[name] = text` sets the property to a text value
