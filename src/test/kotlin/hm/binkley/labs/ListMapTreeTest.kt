@@ -112,18 +112,18 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `should be convenient to set an empty property`() {
+    fun `should set an empty property`() {
         val root = ListMapTree.newRoot("ROOT")
 
-        root.setProperty("FOO")
-        val previous = root.setProperty("FOO", null)
+        root.setProperty("FOO", Empty)
+        val previous = root.setProperty("FOO", Empty)
 
         root.properties["FOO"] shouldBe EmptyPropertyValue
         previous shouldBe EmptyPropertyValue
     }
 
     @Test
-    fun `should be convenient to set a binary data property`() {
+    fun `should set a binary data property`() {
         val root = ListMapTree.newRoot("ROOT")
         val previousData = "\u1F337".toByteArray() // 🌷
         val data = "\u1F940".toByteArray() // 🥀
@@ -136,7 +136,7 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `should be convenient to set an integer property with a long`() {
+    fun `should set an integer property with a long`() {
         val root = ListMapTree.newRoot("ROOT")
         val previousNumber = 13L
         val number = 21L
@@ -149,7 +149,7 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `should be convenient to set an integer property with an int`() {
+    fun `should set an integer property with an int`() {
         val root = ListMapTree.newRoot("ROOT")
         val previousNumber = 13
         val number = 21
@@ -162,7 +162,7 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `should be convenient to set an integer property with a short`() {
+    fun `should set an integer property with a short`() {
         val root = ListMapTree.newRoot("ROOT")
         val previousNumber = 13.toShort()
         val number = 21.toShort()
@@ -175,7 +175,7 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `should be convenient to set an integer property with a byte`() {
+    fun `should set an integer property with a byte`() {
         val root = ListMapTree.newRoot("ROOT")
         val previousNumber = 0b1101.toByte() // 13
         val number = 0b10101.toByte() // 21
@@ -188,7 +188,7 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `should be convenient to set a text property`() {
+    fun `should set a text property`() {
         val root = ListMapTree.newRoot("ROOT")
         val previousText = "BAR"
         val text = "BAZ"
@@ -201,7 +201,18 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `int indices should select child nodes`() {
+    fun `should remove a property`() {
+        val root = ListMapTree.newRoot("ROOT")
+
+        root.setProperty("FOO", "BAR")
+        val previous = root.removeProperty("FOO")
+
+        root.properties.keys.contains("FOO") shouldBe false
+        previous shouldBe TextPropertyValue("BAR")
+    }
+
+    @Test
+    fun `should select a child node with an index`() {
         val root = ListMapTree.newRoot("ROOT")
         val node = root.newNode("CHILD")
 
@@ -212,7 +223,7 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `string indices should select properties`() {
+    fun `should select a property with an index`() {
         val root = ListMapTree.newRoot("ROOT")
 
         root.setProperty("FOO", "BAR")
@@ -222,16 +233,26 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `string (property) indices should be assignable as empty`() {
+    fun `should remove a property with an index`() {
         val root = ListMapTree.newRoot("ROOT")
+        root["FOO"] = Empty
 
         root["FOO"] = null
+
+        root.properties.keys.contains("FOO") shouldBe false
+    }
+
+    @Test
+    fun `should assign an empty property`() {
+        val root = ListMapTree.newRoot("ROOT")
+
+        root["FOO"] = Empty
 
         root.properties["FOO"] shouldBe EmptyPropertyValue
     }
 
     @Test
-    fun `string (property) indices should be assignable with binary data`() {
+    fun `should assign a property with binary data`() {
         val root = ListMapTree.newRoot("ROOT")
         val data = "\u1F337".toByteArray() // 🌷
 
@@ -241,7 +262,7 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `string (property) indices should be assignable with numbers`() {
+    fun `should assign a property with a number`() {
         val root = ListMapTree.newRoot("ROOT")
 
         root["FOO"] = 13
@@ -250,7 +271,7 @@ internal class ListMapTreeTest {
     }
 
     @Test
-    fun `string (property) indices should be assignable with text`() {
+    fun `should assign a property with text`() {
         val root = ListMapTree.newRoot("ROOT")
 
         root["FOO"] = "BAR"

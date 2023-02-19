@@ -69,8 +69,8 @@ This returns the previous property value, or `null` if the property is new.
 
 Values for properties may be of these types:
 
-- `BinaryDataPropertyValue` (constructed with a `ByteArray` parameter)
 - `EmptyPropertyValue` (no constructor \[\*])
+- `BinaryDataPropertyValue` (constructed with a `ByteArray` parameter)
 - `IntegerPropertyValue` (constructed with a `Long` parameter)
 - `TextPropertyValue` (constructed with a `String` parameter)
 
@@ -80,8 +80,8 @@ that you need, and do not need an actual value.
 
 For convience, you may also assign properties with direct values:
 
-- `node.setProperty("FOO")` sets an empty property (as does
-  `node.setProperty("FOO", null)`)
+- `node.setProperty("FOO", null)`) removes the property
+- `node.setProperty("FOO", Empty)`)
 - `node.setProperty("FOO", binaryData)`
 - `node.setProperty("FOO", number)`
 - `node.setProperty("FOO", text)`
@@ -95,8 +95,8 @@ indices:
 
 Similarly for properties:
 
-- `node[key]` yields the value of the "key" property, or `null` for either a
-  missing key or an empty value
+- `node[key]` yields the value of the "key" property, or `null` when missing
+- `node[key] = Empty` sets the "key" property to an empty value
 - `node[key] = null` sets the "key" property to an empty value
 - `node[key] = data` sets the "key" property to a binary data value
 - `node[key] = number` sets the "key" property to an integer value

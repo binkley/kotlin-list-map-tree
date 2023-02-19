@@ -21,6 +21,8 @@ class ListMapTree private constructor(val name: String, val depth: Int) :
     fun setProperty(name: String, value: PropertyValue<*>) =
         _properties.put(name, value)
 
+    fun removeProperty(name: String) = _properties.remove(name)
+
     override fun compareTo(other: ListMapTree) = name.compareTo(other.name)
 
     override fun toString() =
@@ -33,8 +35,9 @@ class ListMapTree private constructor(val name: String, val depth: Int) :
 
 fun ListMapTree.setProperty(
     name: String,
-    @Suppress("UNUSED_PARAMETER") empty: Unit? = null
-) = setProperty(name, EmptyPropertyValue)
+    @Suppress("UNUSED_PARAMETER") empty: Empty
+) =
+    setProperty(name, EmptyPropertyValue)
 
 fun ListMapTree.setProperty(name: String, data: ByteArray) =
     setProperty(name, BinaryDataPropertyValue(data))
@@ -58,7 +61,14 @@ operator fun ListMapTree.get(index: Int) = children.get(index)
 
 operator fun ListMapTree.get(key: String) = properties.get(key)?.value
 
-operator fun ListMapTree.set(key: String, empty: Unit?) {
+operator fun ListMapTree.set(
+    key: String,
+    @Suppress("UNUSED_PARAMETER") missing: Unit?
+) {
+    removeProperty(key)
+}
+
+operator fun ListMapTree.set(key: String, empty: Empty) {
     setProperty(key, empty)
 }
 
