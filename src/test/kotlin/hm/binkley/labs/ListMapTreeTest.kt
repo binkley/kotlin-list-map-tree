@@ -31,4 +31,13 @@ internal class ListMapTreeTest {
 
         root.toString() shouldBe "ListMapTree[name=ROOT, depth=0, children=[ListMapTree[name=CHILD, depth=1, children=[], properties={}]], properties={FOO=IntegerPropertyValue(value=7)}]" // ktlint-disable max-line-length
     }
+
+    @Test
+    fun `should navigate as indices`() {
+        val root = ListMapTree.newRoot("ROOT")
+        val child = root.addChild("CHILD")
+        child.setProperty("FOO", "BAR")
+
+        root[0]["FOO"] shouldBe "BAR"
+    }
 }
