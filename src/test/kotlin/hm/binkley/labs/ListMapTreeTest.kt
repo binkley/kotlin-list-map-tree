@@ -35,9 +35,11 @@ internal class ListMapTreeTest {
     @Test
     fun `should navigate as indices`() {
         val root = ListMapTree.newRoot("ROOT")
+        root.setProperty("FOO", "BAR")
         val child = root.addChild("CHILD")
-        child.setProperty("FOO", "BAR")
+        child.setProperty("FOO", "BAZ")
 
-        root[0]["FOO"] shouldBe "BAR"
+        root["FOO"] shouldBe "BAR"
+        root[0]["FOO"] shouldBe "BAZ"
     }
 }
