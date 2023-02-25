@@ -130,3 +130,9 @@ Similarly for properties:
 - `node[name] = data` sets the property to a binary data value
 - `node[name] = number` sets the property to an integer value
 - `node[name] = text` sets the property to a text value
+
+An example of using chained index accesses:
+
+```
+val firstFoo = tree[0]["FOO"] // "FOO" property of first child node
+```
