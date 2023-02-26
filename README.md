@@ -134,5 +134,6 @@ Similarly for properties:
 An example of using chained index accesses:
 
 ```
-val firstFoo = tree[0]["FOO"] // "FOO" property of first child node
+root[0]["FOO"] // "FOO" property of first child node
+child[1]["BAR"] // "BAR" property of second child node of another child node
 ```
