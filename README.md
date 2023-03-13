@@ -92,12 +92,12 @@ This returns the previous property value, or `null` if the property is new.
 
 Values for properties may be of these types:
 
-- `EmptyPropertyValue` (no constructor \[\*])
+- `EmptyPropertyValue` (no constructor[^\*])
 - `BinaryDataPropertyValue` (constructed with a `ByteArray` parameter)
 - `IntegerPropertyValue` (constructed with a `Long` parameter)
 - `TextPropertyValue` (constructed with a `String` parameter)
 
-\[\*] `EmptyPropertyValue` is special: it has no true value, but holds a
+[^\*]: `EmptyPropertyValue` is special: it has no true value, but holds a
 dummy `Empty` object. Use this when the presence of the property key is all
 that you need, and do not need an actual value.
 
