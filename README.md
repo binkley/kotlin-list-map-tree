@@ -56,8 +56,8 @@ This returns the new root node.
 
 ### Properties on a node
 
-- `depth` is how far (how many traversals) this node lies from the root node;
-  the root node is 0 depth from itself
+- `depth` is how far (how many node traversals) this node lies from the root
+  node; the root node is 0 depth from itself
 - `name` is the node name: all nodes are named, and must be unique among
   children of a parent node
 
