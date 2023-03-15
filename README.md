@@ -131,6 +131,9 @@ Similarly for properties:
 - `node[name] = number` sets the property to an integer value
 - `node[name] = text` sets the property to a text value
 
+Note that these patterns prioritize current node properties over access to
+children by name (see issue #16).
+
 An example of using chained index accesses:
 
 ```
