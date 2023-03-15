@@ -52,7 +52,7 @@ Create a new tree root (a node) with:
 
 - `ListMapTree.newRoot(name)`
 
-This returns the new root node.
+This returns the new root node, a parent node for other child nodes.
 
 ### Properties on a node
 
@@ -74,10 +74,10 @@ This returns the new child node when not throwing.
 
 ### Remove child nodes from any node
 
-Remove a child node directly or by name:
+Remove a child node directly or by name from a parent node:
 
-- `node.removeChild(node)`
-- `node.removeChild(name)`
+- `parent.removeChild(node)`
+- `parent.removeChild(name)`
 
 This returns `true` or `false` if there were such a child, and removing
 succeeded.
