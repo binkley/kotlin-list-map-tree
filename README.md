@@ -59,7 +59,8 @@ This returns the new root node.
 - `depth` is how far (how many node traversals) this node lies from the root
   node. The root node is 0 depth from itself
 - `name` is the node name: all nodes are named, and must be unique among
-  children of a parent node
+  children of a parent node, but may be non-unique for nodes with different
+  parent nodes
 
 ### Add child nodes to any node
 
