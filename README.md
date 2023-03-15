@@ -46,38 +46,40 @@ Registry](https://en.wikipedia.org/wiki/Windows_Registry).
 
 (See [the tests](./src/test/kotlin/hm/binkley/labs) for examples.)
 
-### Properties on a node:
-
-- `depth` is how far from the root node this node lies
-- `name` is the node name: all nodes are named and must be unique among
-  children
-
 ### Start a new tree root node
 
-Create a new tree root with:
+Create a new tree root (a node) with:
 
 - `ListMapTree.newRoot(name)`
 
 This returns the new root node.
 
+### Properties on a node
+
+- `depth` is how far (how many steps) this node lies from the root node; the
+  root node is 0 depth from itself
+- `name` is the node name: all nodes are named, and must be unique among
+  children of a parent node
+
 ### Add child nodes to any node
 
-Create a new child node and add it:
+Create a new child node, and add it to the parent node:
 
-- `node.newChild(name)`
+- `parent.newChild(name)`
 
-If a sibling node is already named `name`, throw an
-`IllegalArgumentException`.
-This returns the new child node (if not throwing).
+If a sibling node (a child node of the same parent) is already named `name`,
+throw an `IllegalArgumentException`.
+This returns the new child node when not throwing.
 
 ### Remove child nodes from any node
 
 Remove a child node directly or by name:
 
-- `node.removeChild(child)`
+- `node.removeChild(node)`
 - `node.removeChild(name)`
 
-This returns `true` or `false` if there were a child node with `name`.
+This returns `true` or `false` if there were such a child, and removing
+succeeded.
 
 ### Add propeties to a node
 
