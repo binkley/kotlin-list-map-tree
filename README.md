@@ -12,6 +12,9 @@
 
 Experiment with viewing a tree as a list and a map.
 
+This is also a good project to copy as a Kotlin starter following [modern JVM
+build practices](https://github.com/binkley/modern-java-practices).
+
 ## Build and try
 
 To build, use `./batect build`.
