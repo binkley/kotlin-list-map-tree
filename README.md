@@ -17,8 +17,11 @@ build practices](https://github.com/binkley/modern-java-practices).
 
 ## Build and try
 
-To build, use `./batect build`.
-(This is as calling `./mvnw clean verify` with the same JDK.)
+To build, use `./mvnw clean verify`.
+Try `./run` for a demonstration.
+
+To build as CI would, use `./batect build`.
+Try `./batect run` for a demonstration as CI would.
 
 This project assumes JDK 17.
 There are no run-time dependencies beyond the Kotlin standard library.
