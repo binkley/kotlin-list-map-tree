@@ -183,9 +183,6 @@
                         <goals>
                             <goal>test-compile</goal>
                         </goals>
-                        <configuration>
-                            <skip>${maven.test.skip}</skip>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
