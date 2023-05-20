@@ -26,6 +26,7 @@ value class BinaryDataPropertyValue(override val value: ByteArray) :
  * There is only one instance of `Empty`.
  *
  * @see EmptyPropertyValue
+ * @todo Use Kotlin 1.9 data object
  */
 object Empty {
     override fun toString() = "Empty"
