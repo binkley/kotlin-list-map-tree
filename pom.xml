@@ -47,7 +47,7 @@
         <kotlin.code.style>official</kotlin.code.style>
         <kotlin.compiler.jvmTarget>${jdk.version}</kotlin.compiler.jvmTarget>
         <kotlin.version>1.9.0</kotlin.version>
-        <ktlint-maven-plugin.version>1.16.0</ktlint-maven-plugin.version>
+        <ktlint-maven-plugin.version>2.0.0</ktlint-maven-plugin.version>
         <lombok.version>1.18.28</lombok.version>
         <maven-assembly-plugin.version>3.4.2</maven-assembly-plugin.version>
         <maven-clean-plugin.version>3.3.1</maven-clean-plugin.version>
