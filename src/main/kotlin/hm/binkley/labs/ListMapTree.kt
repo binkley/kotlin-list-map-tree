@@ -33,8 +33,9 @@ class ListMapTree private constructor(val name: String, val depth: Int) :
 
     override fun compareTo(other: ListMapTree) = name.compareTo(other.name)
 
+    @Suppress("ktlint:standard:max-line-length")
     override fun toString() =
-        "ListMapTree[name=$name, depth=$depth, children=$_children, properties=$_properties]" // ktlint-disable max-line-length
+        "ListMapTree[name=$name, depth=$depth, children=$_children, properties=$_properties]"
 
     companion object {
         fun newRoot(name: String) = ListMapTree(name, 0)
