@@ -45,8 +45,7 @@ class ListMapTree private constructor(val name: String, val depth: Int) :
 fun ListMapTree.setProperty(
     name: String,
     @Suppress("UNUSED_PARAMETER") empty: Empty
-) =
-    setProperty(name, EmptyPropertyValue)
+) = setProperty(name, EmptyPropertyValue)
 
 fun ListMapTree.setProperty(name: String, data: ByteArray) =
     setProperty(name, BinaryDataPropertyValue(data))
